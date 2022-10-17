@@ -6,7 +6,7 @@ using AnimalKingdom.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AnimalKingdomContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("AnimalKingdomContext") ?? throw new InvalidOperationException("Connection string 'AnimalKingdomContext' not found.")));
+    options.UseNpgsql(builder.Configuration.GetValue<string>("AnimalKingdomContext") ?? throw new InvalidOperationException("Connection string 'AnimalKingdomContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
